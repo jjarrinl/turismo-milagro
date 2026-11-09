@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Descubre Milagro · La tierra más dulce del Ecuador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#0f3d2e; --verde2:#1a5c43; --caña:#7fb069; --piña:#f4b324; --piña2:#ffd36b;
+  --coral:#e2603b; --crema:#fbf6ea; --arena:#f2e8d2; --tinta:#1d2a24; --gris:#5d6b63;
+  --radio:22px; --sombra:0 18px 40px -18px rgba(15,61,46,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',system-ui,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.6;font-size:17px;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.1;color:var(--verde)}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{width:min(1180px,92%);margin-inline:auto}
+button{font:inherit;cursor:pointer;border:0;background:none}
+
+/* ---------- NAV ---------- */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(251,246,234,.86);backdrop-filter:blur(14px);border-bottom:1px solid rgba(15,61,46,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Fraunces',serif;font-weight:800;font-size:1.35rem;color:var(--verde)}
+.logo small{display:block;font-family:'Outfit';font-weight:500;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-top:-2px}
+.menu{display:flex;gap:4px;list-style:none}
+.menu a{display:block;padding:9px 15px;border-radius:999px;text-decoration:none;font-weight:500;font-size:.95rem;color:var(--verde);transition:.25s}
+.menu a:hover{background:var(--arena)}
+.menu a.activo{background:var(--verde);color:var(--crema)}
+.burger{display:none;width:44px;height:44px;border-radius:12px;background:var(--verde);color:#fff;align-items:center;justify-content:center}
+@media (max-width:920px){
+  .burger{display:flex}
+  .menu{position:fixed;inset:72px 0 auto 0;flex-direction:column;background:var(--crema);padding:16px 4%;gap:6px;border-bottom:1px solid rgba(0,0,0,.08);transform:translateY(-130%);transition:.35s;box-shadow:var(--sombra)}
+  .menu.abierto{transform:none}
+  .menu a{padding:13px 18px}
+}
+
+/* ---------- VISTAS ---------- */
+.vista{display:none;animation:entra .6s ease}
+.vista.visible{display:block}
+@keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;background:linear-gradient(90deg,rgba(10,42,32,.88) 0%,rgba(10,42,32,.55) 45%,rgba(10,42,32,.05) 80%),url(img/portada.jpg) center/cover;color:#fff;min-height:640px}
+.hero h1{color:#fff}.hero .eyebrow{background:rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(6px)}
+.hero p.lead{color:rgba(255,255,255,.9)!important}.hero h1 em{color:var(--piña)!important}
+.hero .btn-s{background:rgba(255,255,255,.92)}
+.foto{width:100%;height:100%;object-fit:cover;display:block}
+.marco{border-radius:30px;overflow:hidden;box-shadow:var(--sombra);position:relative;aspect-ratio:4/3}
+.marco figcaption{position:absolute;left:16px;bottom:16px;background:rgba(15,61,46,.8);color:#fff;padding:7px 14px;border-radius:999px;font-size:.85rem;backdrop-filter:blur(6px)}
+.lugar .img.con-foto{background-size:cover!important;background-position:center!important}
+.cabecera-pag.con-foto{background-size:cover;background-position:center;padding:110px 0 90px}
+.hero .wrap{display:grid;grid-template-columns:1fr;max-width:1180px;gap:40px;align-items:center;padding:110px 0 170px;position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.55);padding:7px 14px;border-radius:999px;font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
+.hero h1{font-size:clamp(2.7rem,6.3vw,5.2rem);font-weight:800;margin:18px 0 18px;letter-spacing:-.02em}
+.hero h1 em{font-style:italic;color:var(--coral);font-weight:700}
+.hero p.lead{font-size:1.15rem;max-width:520px;color:#2a3a32}
+.botones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-weight:600;text-decoration:none;transition:.25s;font-size:1rem}
+.btn-p{background:var(--verde);color:var(--crema)}
+.btn-p:hover{background:var(--coral);transform:translateY(-3px)}
+.btn-s{background:rgba(255,255,255,.65);color:var(--verde)}
+.btn-s:hover{background:#fff;transform:translateY(-3px)}
+.hero-ilus{position:relative}
+.hero-ilus svg{width:100%;filter:drop-shadow(0 30px 40px rgba(15,61,46,.25))}
+.flota{animation:flota 5s ease-in-out infinite}
+@keyframes flota{50%{transform:translateY(-12px)}}
+.ola{position:absolute;bottom:-1px;left:0;width:100%;z-index:3}
+
+/* ---------- STATS ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-70px;position:relative;z-index:5}
+.stat{background:#fff;border-radius:var(--radio);padding:26px 22px;box-shadow:var(--sombra)}
+.stat b{font-family:'Fraunces';font-size:2.4rem;color:var(--verde);display:block;line-height:1}
+.stat span{color:var(--gris);font-size:.93rem}
+@media (max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}.hero .wrap{grid-template-columns:1fr;padding:50px 0 110px}}
+
+/* ---------- SECCIONES ---------- */
+section.bloque{padding:90px 0}
+.titulo{max-width:720px;margin-bottom:46px}
+.titulo .tag{color:var(--coral);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+.titulo h2{font-size:clamp(2rem,4.2vw,3.2rem);margin:10px 0 14px;letter-spacing:-.01em}
+.titulo p{color:var(--gris);font-size:1.08rem}
+.cabecera-pag{background:var(--verde);color:var(--crema);padding:80px 0 70px;position:relative;overflow:hidden}
+.cabecera-pag h1{color:var(--crema);font-size:clamp(2.4rem,5.5vw,4.3rem);font-weight:800;margin:12px 0}
+.cabecera-pag p{max-width:620px;opacity:.85;font-size:1.1rem}
+.cabecera-pag .tag{color:var(--piña);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.8rem}
+.cabecera-pag .deco{position:absolute;right:-40px;bottom:-40px;width:340px;opacity:.16}
+
+/* tarjetas de navegación en inicio */
+.grid-explora{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.explora{position:relative;border-radius:var(--radio);padding:30px;min-height:260px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:#fff;overflow:hidden;transition:.35s;box-shadow:var(--sombra)}
+.explora:hover{transform:translateY(-8px) rotate(-.4deg)}
+.explora h3{color:#fff;font-size:1.7rem;margin-bottom:6px}
+.explora p{opacity:.9;font-size:.97rem}
+.explora .ico{position:absolute;top:22px;right:22px;width:90px;opacity:.95;transition:.4s}
+.explora:hover .ico{transform:scale(1.12) rotate(6deg)}
+.explora .flecha{margin-top:14px;font-weight:600;display:inline-flex;gap:8px}
+.c1{background:linear-gradient(140deg,#1a5c43,#0f3d2e)}
+.c2{background:linear-gradient(140deg,#f4b324,#e2603b)}
+.c3{background:linear-gradient(140deg,#e2603b,#a83a22)}
+.c4{background:linear-gradient(140deg,#7fb069,#1a5c43)}
+.c5{background:linear-gradient(140deg,#2d5a7b,#0f3d2e)}
+.c6{background:linear-gradient(140deg,#5b3a6e,#e2603b)}
+@media (max-width:900px){.grid-explora{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.grid-explora{grid-template-columns:1fr}}
+
+/* dos columnas */
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+@media (max-width:860px){.dos{grid-template-columns:1fr;gap:34px}}
+.caja-ilus{background:var(--arena);border-radius:30px;padding:30px;position:relative}
+.cita{border-left:4px solid var(--piña);padding:6px 0 6px 20px;font-family:'Fraunces';font-size:1.35rem;color:var(--verde);margin:26px 0;font-style:italic}
+
+/* ---------- TIMELINE ---------- */
+.timeline{position:relative;margin-left:14px}
+.timeline:before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--piña),var(--coral),var(--verde));border-radius:3px}
+.hito{position:relative;padding:0 0 34px 38px;cursor:pointer}
+.hito:before{content:"";position:absolute;left:-8px;top:4px;width:19px;height:19px;border-radius:50%;background:#fff;border:4px solid var(--coral);transition:.3s}
+.hito:hover:before,.hito.abierto:before{background:var(--piña);transform:scale(1.2)}
+.hito .anio{font-family:'Fraunces';font-weight:800;font-size:1.6rem;color:var(--coral)}
+.hito h4{font-size:1.2rem;margin:2px 0 4px;font-family:'Outfit';font-weight:600}
+.hito .mas{max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--gris)}
+.hito.abierto .mas{max-height:220px}
+.hito .pista{font-size:.82rem;color:var(--coral);font-weight:600}
+
+/* ---------- ATRACTIVOS ---------- */
+.filtros{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.filtro{padding:10px 20px;border-radius:999px;background:#fff;border:1.5px solid rgba(15,61,46,.15);font-weight:500;color:var(--verde);transition:.25s}
+.filtro:hover{border-color:var(--verde)}
+.filtro.on{background:var(--verde);color:#fff;border-color:var(--verde)}
+.grid-lugares{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:960px){.grid-lugares{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.grid-lugares{grid-template-columns:1fr}}
+.lugar{background:#fff;border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);transition:.35s;display:flex;flex-direction:column}
+.lugar:hover{transform:translateY(-6px)}
+.lugar.oculto{display:none}
+.lugar .img{height:180px;display:flex;align-items:center;justify-content:center;position:relative}
+.lugar .img svg{height:130px;width:auto;transition:.4s}
+.lugar:hover .img svg{transform:scale(1.08)}
+.lugar .chip{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.9);padding:5px 12px;border-radius:999px;font-size:.75rem;font-weight:600;color:var(--verde);text-transform:uppercase;letter-spacing:.06em}
+.lugar .cuerpo{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column}
+.lugar h3{font-size:1.35rem;margin-bottom:8px}
+.lugar p{color:var(--gris);font-size:.95rem;flex:1}
+.acciones{display:flex;gap:10px;margin-top:18px;align-items:center}
+.ver{padding:10px 18px;border-radius:999px;background:var(--arena);font-weight:600;color:var(--verde);font-size:.9rem;transition:.25s}
+.ver:hover{background:var(--piña)}
+.fav{width:42px;height:42px;border-radius:50%;background:var(--arena);display:flex;align-items:center;justify-content:center;transition:.25s;margin-left:auto}
+.fav svg{width:20px;fill:none;stroke:var(--coral);stroke-width:2}
+.fav.on{background:var(--coral)}
+.fav.on svg{fill:#fff;stroke:#fff}
+.contador-fav{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;padding:8px 16px;border-radius:999px;font-weight:600;font-size:.9rem;margin-left:auto}
+
+/* ---------- MODAL ---------- */
+.modal{position:fixed;inset:0;background:rgba(15,61,46,.55);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal.abierto{display:flex;animation:entra .3s}
+.modal-caja{background:var(--crema);border-radius:28px;max-width:620px;width:100%;max-height:90vh;overflow:auto;position:relative}
+.modal-caja .img{height:200px;display:flex;align-items:center;justify-content:center;border-radius:28px 28px 0 0}
+.modal-caja .img svg{height:150px;width:auto}
+.modal-caja .txt{padding:28px 32px 34px}
+.modal-caja h3{font-size:2rem;margin-bottom:10px}
+.modal-caja ul{margin:14px 0 0 18px;color:var(--gris)}
+.cerrar{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:#fff;font-size:1.4rem;color:var(--verde);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+
+/* ---------- GASTRONOMÍA ---------- */
+.platos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media (max-width:960px){.platos{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.platos{grid-template-columns:1fr}}
+.plato{perspective:1000px;height:300px;cursor:pointer}
+.plato-in{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.plato.girado .plato-in{transform:rotateY(180deg)}
+.cara{position:absolute;inset:0;border-radius:var(--radio);backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;box-shadow:var(--sombra)}
+.cara.frente{background:#fff}
+.cara.frente svg{width:120px;margin-bottom:14px}
+.cara.frente h3{font-size:1.3rem}
+.cara.frente small{color:var(--coral);font-weight:600;margin-top:6px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.cara.atras{background:var(--verde);color:var(--crema);transform:rotateY(180deg)}
+.cara.atras h3{color:var(--piña);margin-bottom:10px;font-size:1.25rem}
+.cara.atras p{font-size:.94rem;opacity:.92}
+
+/* banda dulce */
+.banda{background:var(--piña);border-radius:34px;padding:50px;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;margin-top:70px}
+.banda h3{font-size:2rem}
+.banda img{display:block}
+@media (max-width:700px){.banda{grid-template-columns:1fr;padding:34px;text-align:center}.banda img{margin:auto}}
+
+/* ---------- FIESTAS / CALENDARIO ---------- */
+.calendario{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+@media (max-width:760px){.calendario{grid-template-columns:1fr}}
+.fecha{display:flex;gap:22px;background:#fff;border-radius:var(--radio);padding:26px;box-shadow:var(--sombra);align-items:flex-start}
+.dia{min-width:86px;text-align:center;background:var(--coral);color:#fff;border-radius:18px;padding:12px 8px}
+.dia b{font-family:'Fraunces';font-size:2.3rem;display:block;line-height:1}
+.dia span{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.fecha h3{font-size:1.3rem;margin-bottom:6px}
+.fecha p{color:var(--gris);font-size:.95rem}
+.cuenta{background:var(--verde);color:var(--crema);border-radius:30px;padding:44px;margin-top:50px;text-align:center}
+.cuenta h3{color:var(--piña);font-size:1.6rem;margin-bottom:22px}
+.reloj{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.reloj div{background:rgba(255,255,255,.08);border-radius:18px;padding:18px 10px;min-width:104px}
+.reloj b{font-family:'Fraunces';font-size:2.8rem;display:block;line-height:1;color:#fff}
+.reloj span{font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;opacity:.75}
+
+/* ---------- QUIZ ---------- */
+.quiz{background:#fff;border-radius:30px;padding:44px;box-shadow:var(--sombra);max-width:760px;margin:auto}
+.quiz .prog{height:8px;background:var(--arena);border-radius:9px;overflow:hidden;margin-bottom:26px}
+.quiz .prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--piña),var(--coral));transition:.4s}
+.quiz h3{font-size:1.6rem;margin-bottom:22px}
+.opciones{display:grid;gap:12px}
+.op{text-align:left;padding:16px 20px;border-radius:16px;background:var(--crema);border:2px solid transparent;font-weight:500;transition:.2s;color:var(--tinta)}
+.op:hover:not([disabled]){border-color:var(--verde)}
+.op.bien{background:#dff2d8;border-color:#3f8f3a}
+.op.mal{background:#fbdcd2;border-color:var(--coral)}
+.quiz .info{margin-top:18px;color:var(--gris);min-height:24px}
+.quiz .pie{display:flex;justify-content:space-between;align-items:center;margin-top:22px;flex-wrap:wrap;gap:12px}
+
+/* ---------- PLANIFICADOR ---------- */
+.plan{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:start}
+@media (max-width:900px){.plan{grid-template-columns:1fr}}
+.panel{background:#fff;border-radius:28px;padding:34px;box-shadow:var(--sombra)}
+.panel h3{font-size:1.5rem;margin-bottom:18px}
+.campo{margin-bottom:18px}
+.campo label{display:block;font-weight:600;font-size:.92rem;margin-bottom:7px;color:var(--verde)}
+.campo input,.campo select,.campo textarea{width:100%;padding:14px 16px;border-radius:14px;border:1.5px solid rgba(15,61,46,.18);background:var(--crema);font:inherit;color:var(--tinta);transition:.2s}
+.campo input:focus,.campo select:focus,.campo textarea:focus{outline:none;border-color:var(--verde);background:#fff;box-shadow:0 0 0 4px rgba(127,176,105,.25)}
+.campo .error{color:var(--coral);font-size:.83rem;margin-top:5px;display:none}
+.campo.inval input,.campo.inval textarea,.campo.inval select{border-color:var(--coral)}
+.campo.inval .error{display:block}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.checks{grid-template-columns:1fr}}
+.check{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:14px;background:var(--crema);cursor:pointer;border:1.5px solid transparent;transition:.2s;font-size:.95rem}
+.check:has(input:checked){border-color:var(--verde);background:#e6f1df}
+.check input{accent-color:var(--verde);width:18px;height:18px}
+.rango{display:flex;align-items:center;gap:14px}
+.rango input{accent-color:var(--coral);padding:0;border:0;background:none}
+.rango output{font-family:'Fraunces';font-weight:800;font-size:1.5rem;color:var(--coral);min-width:30px}
+.itinerario{background:var(--verde);color:var(--crema);border-radius:28px;padding:34px;position:sticky;top:92px}
+.itinerario h3{color:var(--piña);font-size:1.5rem;margin-bottom:6px}
+.itinerario .vacio{opacity:.7;margin-top:14px}
+.dia-it{margin-top:20px}
+.dia-it h4{color:#fff;font-family:'Outfit';font-weight:600;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;opacity:.75;margin-bottom:8px}
+.dia-it li{list-style:none;padding:10px 14px;background:rgba(255,255,255,.08);border-radius:12px;margin-bottom:8px;display:flex;gap:10px;align-items:center}
+.dia-it li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--piña);flex:none}
+.copiar{margin-top:20px;background:var(--piña);color:var(--verde);padding:12px 20px;border-radius:999px;font-weight:600}
+
+/* ---------- CONTACTO ---------- */
+.perfil{background:var(--verde);color:var(--crema);border-radius:30px;padding:40px;position:relative;overflow:hidden}
+.avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,var(--piña),var(--coral));display:flex;align-items:center;justify-content:center;font-family:'Fraunces';font-size:2.8rem;font-weight:800;color:var(--verde);margin-bottom:22px;border:5px solid rgba(255,255,255,.2)}
+.perfil h3{color:#fff;font-size:1.9rem}
+.perfil .rol{color:var(--piña);font-weight:500;margin:6px 0 22px}
+.dato{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid rgba(255,255,255,.12)}
+.dato svg{width:22px;flex:none;stroke:var(--piña);fill:none;stroke-width:2;margin-top:3px}
+.dato small{display:block;opacity:.65;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}
+.dato a{color:#fff}
+.exito{display:none;text-align:center;padding:30px 10px}
+.exito.ver-ok{display:block;animation:entra .5s}
+.exito .check-ok{width:84px;height:84px;border-radius:50%;background:#dff2d8;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.exito .check-ok svg{width:40px;stroke:#3f8f3a;fill:none;stroke-width:3}
+.contador-car{text-align:right;font-size:.8rem;color:var(--gris);margin-top:4px}
+
+/* recursos */
+.recursos{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media (max-width:700px){.recursos{grid-template-columns:1fr}}
+.recurso{display:flex;gap:16px;align-items:center;background:#fff;padding:20px 22px;border-radius:18px;text-decoration:none;box-shadow:0 6px 20px -12px rgba(15,61,46,.3);transition:.25s;border:1.5px solid transparent}
+.recurso:hover{border-color:var(--piña);transform:translateX(6px)}
+.recurso .ic{width:48px;height:48px;border-radius:14px;background:var(--arena);display:flex;align-items:center;justify-content:center;flex:none;font-size:1.4rem}
+.recurso b{display:block;color:var(--verde)}
+.recurso span{font-size:.88rem;color:var(--gris)}
+
+/* acordeón */
+.faq details{background:#fff;border-radius:18px;padding:20px 24px;margin-bottom:12px;box-shadow:0 6px 20px -14px rgba(15,61,46,.3)}
+.faq summary{font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--verde)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-size:1.6rem;color:var(--coral);transition:.3s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{margin-top:12px;color:var(--gris)}
+
+/* ---------- FOOTER ---------- */
+footer{background:#0a2a20;color:rgba(251,246,234,.75);padding:60px 0 30px;margin-top:40px}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+footer h4{color:var(--piña);font-family:'Outfit';font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+footer a{display:block;text-decoration:none;padding:4px 0;transition:.2s}
+footer a:hover{color:var(--piña)}
+footer .legal{border-top:1px solid rgba(255,255,255,.1);margin-top:40px;padding-top:24px;font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer .logo{color:var(--crema)}
+
+/* subir */
+.subir{position:fixed;right:22px;bottom:22px;width:52px;height:52px;border-radius:50%;background:var(--coral);color:#fff;font-size:1.3rem;box-shadow:var(--sombra);opacity:0;pointer-events:none;transition:.3s;z-index:40}
+.subir.ver{opacity:1;pointer-events:auto}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,120px);background:var(--verde);color:#fff;padding:14px 24px;border-radius:999px;font-weight:500;z-index:200;transition:.4s;box-shadow:var(--sombra)}
+.toast.ver{transform:translate(-50%,0)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(30px);transition:.8s ease}
+.rv.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ============ SVG REUTILIZABLES ============ -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-pina" viewBox="0 0 120 180">
+      <path d="M60 70 C45 40 30 30 22 8 C40 18 52 30 58 50 C58 25 55 12 60 0 C66 12 64 25 63 50 C70 30 80 18 98 8 C90 30 76 40 60 70Z" fill="#3f8f3a"/>
+      <path d="M60 68 C50 48 38 40 34 26 C48 34 56 46 60 62 C64 46 72 34 86 26 C82 40 70 48 60 68Z" fill="#7fb069"/>
+      <ellipse cx="60" cy="122" rx="42" ry="55" fill="#f4b324"/>
+      <g stroke="#c47f12" stroke-width="2.5" fill="none" opacity=".75">
+        <path d="M24 100 L92 160 M22 125 L76 174 M32 80 L100 140 M50 70 L102 115"/>
+        <path d="M96 100 L28 160 M98 125 L44 174 M88 80 L20 140 M70 70 L18 115"/>
+      </g>
+      <ellipse cx="45" cy="105" rx="9" ry="16" fill="#ffd36b" opacity=".6"/>
+    </symbol>
+    <symbol id="i-cana" viewBox="0 0 120 180">
+      <g stroke-linecap="round">
+        <line x1="40" y1="178" x2="46" y2="20" stroke="#7fb069" stroke-width="10"/>
+        <line x1="66" y1="178" x2="70" y2="8" stroke="#5f9a4c" stroke-width="10"/>
+        <line x1="90" y1="178" x2="88" y2="34" stroke="#7fb069" stroke-width="9"/>
+        <g stroke="#3f6f32" stroke-width="3"><line x1="36" y1="140" x2="50" y2="140"/><line x1="38" y1="95" x2="52" y2="95"/><line x1="40" y1="55" x2="52" y2="55"/><line x1="62" y1="150" x2="76" y2="150"/><line x1="62" y1="105" x2="76" y2="105"/><line x1="64" y1="60" x2="76" y2="60"/><line x1="82" y1="130" x2="96" y2="130"/><line x1="82" y1="85" x2="96" y2="85"/></g>
+      </g>
+      <path d="M46 22 C30 10 18 14 6 4 C22 30 36 30 46 30Z M70 10 C88 0 100 4 116 0 C100 22 86 24 70 18Z M88 36 C100 26 110 30 120 24 C110 44 98 46 88 42Z M46 60 C64 50 76 56 90 46 C76 70 60 70 46 66Z" fill="#3f8f3a"/>
+    </symbol>
+    <symbol id="i-tren" viewBox="0 0 200 120">
+      <rect x="20" y="40" width="110" height="52" rx="8" fill="#e2603b"/>
+      <rect x="120" y="22" width="56" height="70" rx="8" fill="#0f3d2e"/>
+      <rect x="130" y="32" width="36" height="24" rx="4" fill="#ffd36b"/>
+      <rect x="30" y="50" width="22" height="18" rx="3" fill="#fbf6ea"/><rect x="62" y="50" width="22" height="18" rx="3" fill="#fbf6ea"/><rect x="94" y="50" width="22" height="18" rx="3" fill="#fbf6ea"/>
+      <rect x="40" y="18" width="16" height="24" fill="#0f3d2e"/>
+      <circle cx="44" cy="10" r="9" fill="#d9d1bf" opacity=".8"/><circle cx="30" cy="4" r="6" fill="#d9d1bf" opacity=".6"/>
+      <g fill="#1d2a24"><circle cx="45" cy="98" r="13"/><circle cx="90" cy="98" r="13"/><circle cx="150" cy="98" r="15"/></g>
+      <g fill="#f4b324"><circle cx="45" cy="98" r="5"/><circle cx="90" cy="98" r="5"/><circle cx="150" cy="98" r="6"/></g>
+      <rect x="0" y="112" width="200" height="6" rx="3" fill="#5d6b63"/>
+    </symbol>
+    <symbol id="i-iglesia" viewBox="0 0 160 170">
+      <rect x="20" y="70" width="120" height="100" fill="#fbf6ea"/>
+      <path d="M10 76 L80 30 L150 76Z" fill="#e2603b"/>
+      <rect x="62" y="0" width="36" height="70" fill="#fbf6ea"/>
+      <path d="M58 6 L80 -14 L102 6Z" fill="#0f3d2e" transform="translate(0,10)"/>
+      <rect x="76" y="-6" width="8" height="22" fill="#f4b324" transform="translate(0,4)"/>
+      <rect x="70" y="22" width="20" height="26" rx="10" fill="#1a5c43"/>
+      <path d="M62 170 V128 a18 18 0 0 1 36 0 V170Z" fill="#0f3d2e"/>
+      <rect x="30" y="100" width="18" height="30" rx="9" fill="#7fb069"/><rect x="112" y="100" width="18" height="30" rx="9" fill="#7fb069"/>
+    </symbol>
+    <symbol id="i-planta" viewBox="0 0 140 170">
+      <path d="M30 120 H110 L100 170 H40Z" fill="#e2603b"/>
+      <rect x="24" y="110" width="92" height="16" rx="4" fill="#c4502f"/>
+      <path d="M70 112 C70 80 70 60 70 40" stroke="#3f8f3a" stroke-width="5"/>
+      <path d="M70 70 C40 70 18 50 14 22 C44 26 66 44 70 70Z" fill="#7fb069"/>
+      <path d="M70 60 C100 58 120 36 126 10 C96 14 74 32 70 60Z" fill="#3f8f3a"/>
+      <path d="M70 96 C50 96 34 84 30 66 C50 68 66 78 70 96Z" fill="#3f8f3a"/>
+      <path d="M70 92 C92 92 108 78 112 60 C92 62 74 72 70 92Z" fill="#7fb069"/>
+      <circle cx="70" cy="32" r="12" fill="#f4b324"/><circle cx="70" cy="32" r="5" fill="#e2603b"/>
+    </symbol>
+    <symbol id="i-parque" viewBox="0 0 180 160">
+      <ellipse cx="90" cy="150" rx="88" ry="10" fill="#7fb069" opacity=".5"/>
+      <rect x="40" y="90" width="10" height="60" fill="#8a5a2b"/><circle cx="45" cy="70" r="36" fill="#3f8f3a"/><circle cx="30" cy="80" r="20" fill="#7fb069"/>
+      <rect x="132" y="96" width="9" height="54" fill="#8a5a2b"/><circle cx="136" cy="80" r="30" fill="#1a5c43"/>
+      <path d="M70 110 L110 110 L104 150 L76 150Z" fill="#d9d1bf"/>
+      <ellipse cx="90" cy="110" rx="26" ry="6" fill="#9bd0e8"/>
+      <path d="M90 108 C90 90 90 84 90 76" stroke="#9bd0e8" stroke-width="4"/>
+      <path d="M90 78 C80 80 76 90 78 98 M90 78 C100 80 104 90 102 98" stroke="#9bd0e8" stroke-width="3" fill="none"/>
+    </symbol>
+    <symbol id="i-rio" viewBox="0 0 180 140">
+      <circle cx="140" cy="34" r="20" fill="#f4b324"/>
+      <path d="M0 80 C40 60 60 90 100 74 C140 58 160 80 180 70 V140 H0Z" fill="#7fb069"/>
+      <path d="M0 100 C40 86 70 110 110 96 C140 86 160 100 180 94 V140 H0Z" fill="#5fa7c9"/>
+      <path d="M10 116 C30 110 50 120 70 114 M90 120 C110 114 130 124 150 118" stroke="#fff" stroke-width="3" fill="none" opacity=".7"/>
+      <path d="M60 104 L100 104 L92 114 L66 114Z" fill="#8a5a2b"/><line x1="80" y1="104" x2="80" y2="80" stroke="#8a5a2b" stroke-width="3"/>
+    </symbol>
+    <symbol id="i-monumento" viewBox="0 0 150 180">
+      <rect x="35" y="140" width="80" height="40" rx="4" fill="#d9d1bf"/><rect x="25" y="170" width="100" height="10" fill="#bdb39d"/>
+      <use href="#i-pina" x="27" y="0" width="96" height="144"/>
+      <g stroke="#ffd36b" stroke-width="3" stroke-linecap="round" opacity=".9"><line x1="10" y1="60" x2="22" y2="66"/><line x1="140" y1="60" x2="128" y2="66"/><line x1="16" y1="100" x2="26" y2="100"/><line x1="134" y1="100" x2="124" y2="100"/></g>
+    </symbol>
+    <symbol id="i-zafrero" viewBox="0 0 150 180">
+      <rect x="40" y="150" width="70" height="30" fill="#d9d1bf"/>
+      <circle cx="74" cy="30" r="16" fill="#8a5a2b"/>
+      <path d="M50 24 Q74 0 98 24Z" fill="#f4b324"/><ellipse cx="74" cy="24" rx="32" ry="5" fill="#e0a018"/>
+      <path d="M56 50 H92 L96 110 H52Z" fill="#1a5c43"/>
+      <path d="M58 110 L54 150 H68 L74 118 L80 150 H94 L90 110Z" fill="#0f3d2e"/>
+      <path d="M92 56 L120 30" stroke="#8a5a2b" stroke-width="8" stroke-linecap="round"/>
+      <path d="M118 32 L142 8 L136 30Z" fill="#9aa5a0"/>
+      <path d="M56 56 L34 90" stroke="#8a5a2b" stroke-width="8" stroke-linecap="round"/>
+      <g stroke="#7fb069" stroke-width="5" stroke-linecap="round"><line x1="20" y1="82" x2="40" y2="100"/><line x1="16" y1="92" x2="38" y2="106"/></g>
+    </symbol>
+    <symbol id="i-finca" viewBox="0 0 180 150">
+      <path d="M0 110 C50 96 120 100 180 106 V150 H0Z" fill="#7fb069"/>
+      <path d="M40 60 L90 24 L140 60Z" fill="#e2603b"/>
+      <rect x="50" y="60" width="80" height="54" fill="#fbf6ea"/>
+      <rect x="82" y="80" width="18" height="34" fill="#8a5a2b"/><rect x="58" y="72" width="16" height="16" fill="#9bd0e8"/><rect x="108" y="72" width="16" height="16" fill="#9bd0e8"/>
+      <g fill="#3f8f3a"><circle cx="20" cy="90" r="16"/><circle cx="162" cy="92" r="14"/></g>
+      <g stroke="#3f8f3a" stroke-width="4"><line x1="150" y1="40" x2="150" y2="104"/><line x1="160" y1="30" x2="164" y2="104"/></g>
+      <path d="M150 40 C140 30 132 34 126 26 M160 30 C170 22 176 26 180 18" stroke="#3f8f3a" stroke-width="5" fill="none"/>
+    </symbol>
+    <symbol id="i-vasija" viewBox="0 0 140 170">
+      <path d="M50 10 H90 V30 C120 50 130 90 116 128 C104 160 36 160 24 128 C10 90 20 50 50 30Z" fill="#c4502f"/>
+      <rect x="44" y="4" width="52" height="12" rx="4" fill="#a83a22"/>
+      <g stroke="#ffd36b" stroke-width="3" fill="none"><path d="M28 70 H112"/><path d="M24 104 H116"/><path d="M34 70 L46 86 L58 70 L70 86 L82 70 L94 86 L106 70"/></g>
+      <circle cx="70" cy="124" r="10" fill="none" stroke="#ffd36b" stroke-width="3"/>
+    </symbol>
+    <symbol id="i-plato" viewBox="0 0 140 110">
+      <ellipse cx="70" cy="70" rx="66" ry="30" fill="#e8dfcc"/><ellipse cx="70" cy="64" rx="56" ry="24" fill="#fff"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#inicio" class="logo">
+      <svg width="34" height="46"><use href="#i-pina"/></svg>
+      <span>Descubre Milagro<small>Tierra más dulce</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Abrir menú">
+      <svg width="22" height="22" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <ul class="menu" id="menu">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#historia">Historia</a></li>
+      <li><a href="#atractivos">Atractivos</a></li>
+      <li><a href="#gastronomia">Gastronomía</a></li>
+      <li><a href="#fiestas">Fiestas</a></li>
+      <li><a href="#planifica">Planifica</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<!-- ================================================= INICIO -->
+<div class="vista" id="v-inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div style="max-width:640px">
+        <span class="eyebrow">📍 Guayas · Ecuador</span>
+        <h1>Bienvenido a <em>Milagro</em>, la tierra más dulce</h1>
+        <p class="lead">Piña, caña de azúcar, viveros que florecen junto a la carretera y una historia que comenzó con un milagro. Recorre con nosotros la ciudad que endulza al Ecuador.</p>
+        <div class="botones">
+          <a href="#atractivos" class="btn btn-p">Explorar atractivos →</a>
+          <a href="#planifica" class="btn btn-s">Arma tu ruta</a>
+        </div>
+      </div>
+          </div>
+    <svg class="ola" viewBox="0 0 1440 90" preserveAspectRatio="none"><path d="M0 50 C240 100 480 0 720 40 C960 80 1200 20 1440 50 V90 H0Z" fill="#fbf6ea"/></svg>
+  </section>
+
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b data-cuenta="1913">0</b><span>Año de cantonización</span></div>
+      <div class="stat"><b data-cuenta="46" data-suf=" km">0</b><span>de Guayaquil, aprox.</span></div>
+      <div class="stat"><b data-cuenta="195943">0</b><span>habitantes (Censo 2022)</span></div>
+      <div class="stat"><b data-cuenta="3">0</b><span>monumentos a la piña</span></div>
+    </div>
+  </div>
+
+  <section class="bloque">
+    <div class="wrap dos">
+      <div class="rv">
+        <div class="titulo" style="margin-bottom:10px">
+          <span class="tag">¿Por qué Milagro?</span>
+          <h2>Una ciudad con sabor a piña y caña</h2>
+        </div>
+        <p>San Francisco de Milagro es la cabecera del cantón del mismo nombre, en el centro-sur de la provincia del Guayas, dentro de la cuenca baja del río Guayas. Es una de las ciudades más grandes de la provincia y su vida está profundamente unida a la agricultura.</p>
+        <p class="cita">“La tierra más dulce del Ecuador”</p>
+        <p>Así la llaman por su tradición en el cultivo de piña y caña de azúcar. Hoy la piña sigue siendo su emblema: aparece en monumentos, en su identidad cultural y en el orgullo de cada milagreño.</p>
+        <div class="botones"><a href="#historia" class="btn btn-p">Conoce su historia</a></div>
+      </div>
+      <figure class="marco rv"><img class="foto" src="img/pina.jpg" alt="Monumento a la piña iluminado al atardecer"><figcaption>📍 Monumento a la Piña</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="bloque" style="padding-top:0">
+    <div class="wrap">
+      <div class="titulo rv"><span class="tag">Explora el sitio</span><h2>¿Qué quieres descubrir hoy?</h2><p>Cada sección te lleva a una parte distinta de Milagro. Toca una tarjeta para entrar.</p></div>
+      <div class="grid-explora">
+        <a href="#historia" class="explora c1 rv"><svg class="ico"><use href="#i-vasija"/></svg><h3>Historia</h3><p>De la cultura Los Chirijos al cantón de 1913.</p><span class="flecha">Entrar →</span></a>
+        <a href="#atractivos" class="explora c2 rv"><svg class="ico"><use href="#i-monumento"/></svg><h3>Atractivos</h3><p>Monumentos, parques, viveros y fincas.</p><span class="flecha">Entrar →</span></a>
+        <a href="#gastronomia" class="explora c3 rv"><svg class="ico"><use href="#i-pina"/></svg><h3>Gastronomía</h3><p>Sabores costeños y dulces de piña.</p><span class="flecha">Entrar →</span></a>
+        <a href="#fiestas" class="explora c4 rv"><svg class="ico"><use href="#i-iglesia"/></svg><h3>Fiestas</h3><p>Calendario cultural y fiestas septembrinas.</p><span class="flecha">Entrar →</span></a>
+        <a href="#planifica" class="explora c5 rv"><svg class="ico"><use href="#i-tren"/></svg><h3>Planifica</h3><p>Arma tu itinerario y juega la trivia.</p><span class="flecha">Entrar →</span></a>
+        <a href="#contacto" class="explora c6 rv"><svg class="ico"><use href="#i-planta"/></svg><h3>Contacto</h3><p>Sobre la autora y formulario.</p><span class="flecha">Entrar →</span></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================= HISTORIA -->
+<div class="vista" id="v-historia">
+  <div class="cabecera-pag con-foto" style="background-image:linear-gradient(90deg,rgba(10,42,32,.92),rgba(10,42,32,.55)),url(img/iglesia.jpg)"><div class="wrap"><span class="tag">Página 1 · Historia</span><h1>Un nombre nacido de un milagro</h1><p>Siglos de historia: pueblos ancestrales, una leyenda colonial, el ferrocarril y la cantonización.</p></div><svg class="deco" style="display:none"><use href="#i-vasija"/></svg></div>
+  <section class="bloque">
+    <div class="wrap dos" style="align-items:start">
+      <div class="rv">
+        <div class="titulo" style="margin-bottom:20px"><span class="tag">La leyenda</span><h2>¿Por qué se llama Milagro?</h2></div>
+        <p>Según la tradición, a finales del siglo XVIII doña María, esposa del hacendado español <strong>Miguel de Salcedo</strong>, enfermó gravemente de fiebre. Don Miguel rezó una novena a San Francisco pidiendo un milagro, mientras ella seguía un tratamiento con hierbas que le dio un indígena de la zona.</p>
+        <p style="margin-top:14px">Al poco tiempo doña María se recuperó. Agradecido, Salcedo atribuyó la curación a San Francisco, y desde entonces el lugar lleva el nombre de <strong>San Francisco de Milagro</strong>.</p>
+        <div class="caja-ilus" style="margin-top:30px;display:flex;gap:20px;align-items:center">
+          <img src="img/iglesia.jpg" alt="Iglesia de San Francisco" style="width:120px;height:120px;object-fit:cover;border-radius:16px;flex:none">
+          <p style="margin:0;color:var(--gris);font-size:.95rem">El cronista local Víctor Hugo Vicuña ha señalado que esta historia es tradición oral y no está documentada; existen otras versiones sobre el origen del nombre.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="titulo" style="margin-bottom:24px"><span class="tag">Línea de tiempo</span><h2>Momentos clave</h2><p>Toca cada fecha para ver más.</p></div>
+        <div class="timeline" id="timeline">
+          <div class="hito"><span class="anio">Antes de 1500</span><h4>Pueblos ancestrales</h4><span class="pista">Ver más +</span><div class="mas"><p>En la zona se asentó la cultura conocida localmente como Los Chirijos. Coleccionistas milagreños conservan cientos de piezas arqueológicas de esa época.</p></div></div>
+          <div class="hito"><span class="anio">1786</span><h4>La leyenda del milagro</h4><span class="pista">Ver más +</span><div class="mas"><p>Según la tradición, el 15 de diciembre de 1786 Miguel de Salcedo nombra su hacienda “San Francisco del Milagro”. Hoy esa fecha se recuerda como el Día del Milagreñismo.</p></div></div>
+          <div class="hito"><span class="anio">1820</span><h4>Recinto El Milagro</h4><span class="pista">Ver más +</span><div class="mas"><p>El 8 de noviembre de 1820 se crea el recinto El Milagro, primer reconocimiento como poblado.</p></div></div>
+          <div class="hito"><span class="anio">1842</span><h4>Parroquia de Guayaquil</h4><span class="pista">Ver más +</span><div class="mas"><p>El 17 de octubre de 1842 Milagro se convierte en parroquia del cantón Guayaquil. En 1883 pasa a formar parte del nuevo cantón Yaguachi.</p></div></div>
+          <div class="hito"><span class="anio">Inicios s. XX</span><h4>Llega el tren</h4><span class="pista">Ver más +</span><div class="mas"><p>El ferrocarril trajo comercio y visitantes nacionales y extranjeros; con él empezó el turismo en Milagro.</p></div></div>
+          <div class="hito"><span class="anio">1913</span><h4>Cantonización</h4><span class="pista">Ver más +</span><div class="mas"><p>El 17 de septiembre de 1913 el presidente Leonidas Plaza Gutiérrez firma el decreto que eleva a Milagro a la categoría de cantón.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bloque" style="background:var(--arena)">
+    <div class="wrap">
+      <div class="titulo rv"><span class="tag">Identidad</span><h2>Símbolos milagreños</h2></div>
+      <div class="grid-explora">
+        <div class="explora c2 rv" style="min-height:220px"><svg class="ico"><use href="#i-pina"/></svg><h3>La piña</h3><p>Emblema de la ciudad, presente en monumentos, poemas y canciones.</p></div>
+        <div class="explora c4 rv" style="min-height:220px"><svg class="ico"><use href="#i-cana"/></svg><h3>La caña</h3><p>Motor económico; Milagro es sede del Ingenio Valdez, uno de los grandes del país.</p></div>
+        <div class="explora c1 rv" style="min-height:220px"><svg class="ico"><use href="#i-finca"/></svg><h3>El verde</h3><p>En su bandera, el verde representa la riqueza agrícola del cantón.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================= ATRACTIVOS -->
+<div class="vista" id="v-atractivos">
+  <div class="cabecera-pag con-foto" style="background-image:linear-gradient(90deg,rgba(10,42,32,.92),rgba(10,42,32,.55)),url(img/parque.jpg)"><div class="wrap"><span class="tag">Página 2 · Atractivos</span><h1>Lugares que tienes que visitar</h1><p>Filtra por tipo, abre cada lugar para ver detalles y guarda tus favoritos con el corazón.</p></div><svg class="deco" style="display:none"><use href="#i-monumento"/></svg></div>
+  <section class="bloque">
+    <div class="wrap">
+      <div class="filtros" id="filtros">
+        <button class="filtro on" data-f="todos">Todos</button>
+        <button class="filtro" data-f="urbano">Urbanos</button>
+        <button class="filtro" data-f="natural">Naturales</button>
+        <button class="filtro" data-f="rural">Rurales</button>
+        <button class="filtro" data-f="cultural">Culturales</button>
+        <span class="contador-fav">♥ Favoritos: <b id="nFav">0</b></span>
+      </div>
+      <div class="grid-lugares" id="lugares"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================= GASTRONOMÍA -->
+<div class="vista" id="v-gastronomia">
+  <div class="cabecera-pag con-foto" style="background-image:linear-gradient(90deg,rgba(10,42,32,.92),rgba(10,42,32,.55)),url(img/comida.jpg)"><div class="wrap"><span class="tag">Página 3 · Gastronomía</span><h1>Sabores de la costa milagreña</h1><p>La cocina de Milagro mezcla tradición montuvia, frutas tropicales y el dulzor de la caña. Toca cada plato para darle la vuelta.</p></div><svg class="deco" style="display:none"><use href="#i-pina"/></svg></div>
+  <section class="bloque">
+    <div class="wrap">
+      <div class="platos" id="platos"></div>
+      <div class="banda rv">
+        <img src="img/comida.jpg" alt="Jugo de piña, seco de gallina y bolón" style="width:320px;max-width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px;box-shadow:var(--sombra)">
+        <div>
+          <h3>Ruta dulce: la piña en todas sus formas</h3>
+          <p style="margin-top:10px">En Milagro la piña se disfruta fresca, en jugo, en dulce de piña o como relleno de postres. Aunque hoy gran parte de la fruta llega de cantones vecinos, sigue siendo el sabor que define a la ciudad.</p>
+          <div class="botones" style="margin-top:20px"><a href="#atractivos" class="btn btn-p">Ver dónde comprar →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================= FIESTAS -->
+<div class="vista" id="v-fiestas">
+  <div class="cabecera-pag con-foto" style="background-image:linear-gradient(90deg,rgba(10,42,32,.92),rgba(10,42,32,.55)),url(img/fiestas.jpg)"><div class="wrap"><span class="tag">Página 4 · Fiestas y cultura</span><h1>Un calendario lleno de tradición</h1><p>Desfiles, retretas, cabalgatas montuvias y la bendición de frutas: conoce las fechas más importantes.</p></div><svg class="deco" style="display:none"><use href="#i-iglesia"/></svg></div>
+  <section class="bloque">
+    <div class="wrap">
+      <div class="calendario">
+        <div class="fecha rv"><div class="dia"><b>17</b><span>Sept</span></div><div><h3>Cantonización de Milagro</h3><p>La fiesta mayor. Durante septiembre hay pregones, retretas, misa campal y bendición de frutas en la iglesia central, y festivales en el Parque Central.</p></div></div>
+        <div class="fecha rv"><div class="dia"><b>17</b><span>Oct</span></div><div><h3>Parroquialización</h3><p>Recuerda la creación de la parroquia Milagro en 1842, cuando pertenecía al cantón Guayaquil.</p></div></div>
+        <div class="fecha rv"><div class="dia"><b>8</b><span>Nov</span></div><div><h3>Creación del recinto</h3><p>Conmemora el 8 de noviembre de 1820, cuando nace el recinto El Milagro.</p></div></div>
+        <div class="fecha rv"><div class="dia"><b>15</b><span>Dic</span></div><div><h3>Día del Milagreñismo</h3><p>Honra la leyenda de 1786 que dio nombre a la ciudad y el orgullo de ser milagreño.</p></div></div>
+        <div class="fecha rv"><div class="dia" style="background:var(--verde)"><b>🐎</b><span>Anual</span></div><div><h3>Cabalgata montuvia</h3><p>Milagro ha sido sede de la Gran Cabalgata de Integración Montuvia, con platos típicos y artesanías.</p></div></div>
+        <div class="fecha rv"><div class="dia" style="background:var(--piña);color:var(--verde)"><b>🎭</b><span>Todo el año</span></div><div><h3>Teatro y cultura</h3><p>Grupos culturales locales llevan a escena la historia ancestral y la leyenda de Milagro.</p></div></div>
+      </div>
+      <figure class="marco rv" style="margin-top:50px;aspect-ratio:21/9"><img class="foto" src="img/fiestas.jpg" alt="Desfile de las fiestas de Milagro"><figcaption>🎉 Desfiles de las fiestas septembrinas</figcaption></figure>
+      <div class="cuenta rv">
+        <h3 id="cuentaTit">Faltan para las fiestas de cantonización</h3>
+        <div class="reloj"><div><b id="cd-d">0</b><span>días</span></div><div><b id="cd-h">0</b><span>horas</span></div><div><b id="cd-m">0</b><span>min</span></div><div><b id="cd-s">0</b><span>seg</span></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================= PLANIFICA -->
+<div class="vista" id="v-planifica">
+  <div class="cabecera-pag con-foto" style="background-image:linear-gradient(90deg,rgba(10,42,32,.92),rgba(10,42,32,.55)),url(img/rio.jpg)"><div class="wrap"><span class="tag">Página 5 · Planifica tu visita</span><h1>Arma tu ruta por Milagro</h1><p>Elige los lugares que te interesan y cuántos días tienes: te armamos un itinerario al instante. Al final, pon a prueba lo que aprendiste.</p></div><svg class="deco" style="display:none"><use href="#i-tren"/></svg></div>
+  <section class="bloque">
+    <div class="wrap plan">
+      <form class="panel" id="formPlan" novalidate>
+        <h3>1. Cuéntanos de tu viaje</h3>
+        <div class="campo"><label for="pNombre">Tu nombre</label><input id="pNombre" placeholder="Ej.: Ana"></div>
+        <div class="campo"><label>¿Cuántos días te quedas?</label><div class="rango"><input type="range" id="pDias" min="1" max="3" value="1" style="flex:1"><output id="pDiasOut">1</output></div></div>
+        <div class="campo"><label for="pTipo">Viajas…</label>
+          <select id="pTipo"><option>Solo/a</option><option>En pareja</option><option>En familia</option><option>Con amigos</option><option>Con mi curso de la universidad</option></select></div>
+        <div class="campo"><label>2. ¿Qué quieres visitar?</label><div class="checks" id="pChecks"></div></div>
+        <button type="submit" class="btn btn-p" style="width:100%;justify-content:center">Generar mi itinerario ✨</button>
+      </form>
+      <aside class="itinerario" id="itinerario">
+        <h3>Tu itinerario</h3>
+        <p class="vacio">Selecciona lugares y presiona “Generar mi itinerario”.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="bloque" style="background:var(--arena)">
+    <div class="wrap">
+      <div class="titulo rv" style="text-align:center;margin-inline:auto"><span class="tag">Trivia</span><h2>¿Cuánto sabes de Milagro?</h2><p>5 preguntas rápidas. ¡Demuestra que eres un experto milagreño!</p></div>
+      <div class="quiz" id="quiz"></div>
+    </div>
+  </section>
+
+  <section class="bloque">
+    <div class="wrap">
+      <div class="titulo rv"><span class="tag">Preguntas frecuentes</span><h2>Antes de viajar</h2></div>
+      <div class="faq rv">
+        <details><summary>¿Cómo llego a Milagro desde Guayaquil?</summary><p>Milagro está aproximadamente a 46 km de Guayaquil. Se llega por carretera en bus interprovincial o vehículo propio, cruzando Durán. El viaje suele tomar alrededor de una hora, según el tráfico.</p></details>
+        <details><summary>¿Qué clima tiene?</summary><p>Es una ciudad cálida de la costa, con temporada lluviosa entre enero y abril aproximadamente. Lleva ropa fresca, protector solar, gorra y agua.</p></details>
+        <details><summary>¿Cuál es la mejor época para visitar?</summary><p>Septiembre es ideal para vivir las fiestas de cantonización. Los viveros se disfrutan todo el año, especialmente en las mañanas.</p></details>
+        <details><summary>¿Qué souvenir me llevo?</summary><p>Una planta ornamental de los viveros, dulces de piña o una piña fresca. ¡Lo más milagreño posible!</p></details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================= CONTACTO -->
+<div class="vista" id="v-contacto">
+  <div class="cabecera-pag con-foto" style="background-image:linear-gradient(90deg,rgba(10,42,32,.92),rgba(10,42,32,.55)),url(img/viveros.jpg)"><div class="wrap"><span class="tag">Contacto</span><h1>Hablemos</h1><p>Este sitio fue creado como proyecto académico. Escríbeme tus dudas, sugerencias o lugares que debería agregar.</p></div><svg class="deco" style="display:none"><use href="#i-planta"/></svg></div>
+  <section class="bloque">
+    <div class="wrap dos" style="align-items:start">
+      <div class="perfil rv">
+        <div class="avatar">JJ</div>
+        <h3>Jennifer Janeth Jarrin Luna</h3>
+        <p class="rol">Estudiante de Multimedia y Producción Audiovisual</p>
+        <div class="dato"><svg viewBox="0 0 24 24"><path d="M22 10L12 4 2 10l10 6 10-6z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg><div><small>Universidad</small>Universidad Estatal de Milagro (UNEMI)</div></div>
+        <div class="dato"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg><div><small>Correo</small><a href="mailto:jjarrinl@unemi.edu.ec">jjarrinl@unemi.edu.ec</a></div></div>
+        <div class="dato"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><div><small>Ubicación</small>Milagro, Guayas · Ecuador</div></div>
+        <div class="dato"><svg viewBox="0 0 24 24"><path d="M4 4h16v12H5.2L4 17.2V4z"/></svg><div><small>Proyecto</small>Sitio web interactivo · Tema: Turismo en Milagro</div></div>
+        <button class="copiar" id="copiarCorreo">Copiar correo</button>
+      </div>
+
+      <div class="panel rv">
+        <form id="formContacto" novalidate>
+          <h3>Envíame un mensaje</h3>
+          <div class="campo"><label for="cNombre">Nombre completo *</label><input id="cNombre" autocomplete="name"><div class="error">Escribe tu nombre (mínimo 3 letras).</div></div>
+          <div class="campo"><label for="cCorreo">Correo electrónico *</label><input id="cCorreo" type="email" autocomplete="email"><div class="error">Ingresa un correo válido.</div></div>
+          <div class="campo"><label for="cAsunto">Asunto *</label>
+            <select id="cAsunto"><option value="">Selecciona una opción</option><option>Quiero visitar Milagro</option><option>Sugerir un lugar</option><option>Comentario sobre el sitio</option><option>Otro</option></select><div class="error">Elige un asunto.</div></div>
+          <div class="campo"><label for="cMsj">Mensaje *</label><textarea id="cMsj" rows="5" maxlength="400"></textarea><div class="contador-car"><span id="nCar">0</span>/400</div><div class="error">El mensaje debe tener al menos 10 caracteres.</div></div>
+          <div class="campo"><label>¿Qué tanto te gustó el sitio?</label><div id="estrellas" style="display:flex;gap:6px;font-size:2rem;cursor:pointer;color:#d9d1bf"></div></div>
+          <button type="submit" class="btn btn-p" style="width:100%;justify-content:center">Enviar mensaje</button>
+          <p style="font-size:.8rem;color:var(--gris);margin-top:10px;text-align:center">Formulario de demostración: tu mensaje se guarda solo en esta página. Para escribirme de verdad, usa el correo de la izquierda.</p>
+        </form>
+        <div class="exito" id="exito">
+          <div class="check-ok"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L19 7"/></svg></div>
+          <h3>¡Gracias, <span id="exNombre"></span>!</h3>
+          <p style="color:var(--gris);margin:10px 0 20px">Tu mensaje quedó registrado. Para una respuesta, escríbeme a jjarrinl@unemi.edu.ec.</p>
+          <button class="btn btn-s" style="background:var(--arena)" id="otroMsj">Enviar otro mensaje</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="bloque" style="padding-top:0">
+    <div class="wrap">
+      <div class="titulo rv"><span class="tag">Recursos adicionales</span><h2>Para seguir explorando</h2></div>
+      <div class="recursos">
+        <a class="recurso rv" href="https://milagro.gob.ec" target="_blank" rel="noopener"><span class="ic">🏛️</span><div><b>Municipio de Milagro</b><span>Sitio oficial del GAD Municipal</span></div></a>
+        <a class="recurso rv" href="https://www.unemi.edu.ec" target="_blank" rel="noopener"><span class="ic">🎓</span><div><b>UNEMI</b><span>Universidad Estatal de Milagro</span></div></a>
+        <a class="recurso rv" href="https://guayas.gob.ec/wp-content/uploads/dmdocuments/turismo/GUIA-TURISTICA-GUAYAS-2024-Espanol.pdf" target="_blank" rel="noopener"><span class="ic">🗺️</span><div><b>Guía Turística del Guayas</b><span>Prefectura del Guayas (PDF)</span></div></a>
+        <a class="recurso rv" href="https://es.wikipedia.org/wiki/Milagro_(Ecuador)" target="_blank" rel="noopener"><span class="ic">📖</span><div><b>Milagro en Wikipedia</b><span>Datos generales de la ciudad</span></div></a>
+        <a class="recurso rv" href="https://www.openstreetmap.org/#map=13/-2.1347/-79.5872" target="_blank" rel="noopener"><span class="ic">📍</span><div><b>Mapa de Milagro</b><span>Ver la ciudad en OpenStreetMap</span></div></a>
+        <a class="recurso rv" href="https://www.turismo.gob.ec" target="_blank" rel="noopener"><span class="ic">🇪🇨</span><div><b>Ministerio de Turismo</b><span>Información turística del Ecuador</span></div></a>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="#inicio" class="logo"><svg width="34" height="46"><use href="#i-pina"/></svg><span>Descubre Milagro<small>Tierra más dulce</small></span></a>
+        <p style="margin-top:16px;max-width:340px">Sitio web turístico e interactivo sobre San Francisco de Milagro, Guayas. Proyecto académico de la carrera de Multimedia y Producción Audiovisual.</p>
+      </div>
+      <div><h4>Navegación</h4><a href="#inicio">Inicio</a><a href="#historia">Historia</a><a href="#atractivos">Atractivos</a><a href="#gastronomia">Gastronomía</a></div>
+      <div><h4>Más</h4><a href="#fiestas">Fiestas</a><a href="#planifica">Planifica tu visita</a><a href="#contacto">Contacto</a><a href="https://milagro.gob.ec" target="_blank" rel="noopener">Municipio ↗</a></div>
+    </div>
+    <div class="legal"><span>© 2026 Jennifer Jarrin Luna · UNEMI</span><span>Imágenes con fines ilustrativos · Proyecto académico.</span></div>
+  </div>
+</footer>
+
+<button class="subir" id="subir" aria-label="Volver arriba">↑</button>
+<div class="toast" id="toast"></div>
+
+<div class="modal" id="modal"><div class="modal-caja"><button class="cerrar" id="cerrar" aria-label="Cerrar">×</button><div class="img" id="mImg"></div><div class="txt" id="mTxt"></div></div></div>
+
+<script>
+/* ---------------- DATOS ---------------- */
+const LUGARES=[
+ {id:'pina',foto:'img/pina.jpg',n:'Monumentos a la Piña',t:'urbano',ico:'i-monumento',bg:'#fff1c9',d:'La ciudad tiene tres monumentos dedicados a la piña, su símbolo más querido.',
+  m:['Uno de ellos recibe a los visitantes en el ingreso a la ciudad.','La “piña iluminada” en la “Y” de las avenidas luce especialmente de noche.','Ideal para la foto obligatoria de tu visita.']},
+ {id:'parque',foto:'img/parque.jpg',n:'Parque Central',t:'urbano',ico:'i-parque',bg:'#e3f0da',d:'El corazón de Milagro: sombra, pileta, pérgola y el ir y venir de la ciudad.',
+  m:['Escenario de retretas y festivales durante las fiestas de septiembre.','Muy cerca de la iglesia central y del comercio del centro.','Perfecto para descansar al caer la tarde.']},
+ {id:'iglesia',foto:'img/iglesia.jpg',n:'Iglesia Central de San Francisco',t:'cultural',ico:'i-iglesia',bg:'#fbe0d6',d:'Templo dedicado a San Francisco, el santo que según la leyenda dio nombre a la ciudad.',
+  m:['Aquí se realiza la tradicional bendición de frutas en las fiestas.','Punto de partida ideal para conocer la leyenda del milagro.']},
+ {id:'zafrero',foto:'img/zafrero.jpg',n:'Monumento al Zafrero',t:'cultural',ico:'i-zafrero',bg:'#e3f0da',d:'Homenaje a los trabajadores que cortan la caña, motor económico de Milagro.',
+  m:['Recuerda la importancia de la zafra (cosecha de caña).','Conecta con la historia del Ingenio Valdez, uno de los más grandes del país.']},
+ {id:'viveros',foto:'img/viveros.jpg',n:'Ruta de los Viveros',t:'natural',ico:'i-planta',bg:'#dcefe4',d:'A lo largo de la vía Milagro–Naranjito, decenas de viveros llenos de plantas ornamentales y frutales.',
+  m:['El Municipio impulsa el posicionamiento de esta ruta.','Lugares como el Vivero Samaniego reciben a turistas y estudiantes.','Llévate una planta como recuerdo.']},
+ {id:'rio',foto:'img/rio.jpg',n:'Río Milagro',t:'natural',ico:'i-rio',bg:'#dbeef6',d:'El río que atraviesa el cantón y forma parte de la cuenca baja del Guayas.',
+  m:['Paisaje típico de la costa ecuatoriana.','Ideal para fotografía de naturaleza al amanecer o atardecer.']},
+ {id:'chaparral',n:'Finca El Chaparral',t:'rural',ico:'i-finca',bg:'#f2e8d2',d:'Emprendimiento turístico rural para vivir el campo milagreño.',
+  m:['Visitado en recorridos de la Prefectura del Guayas y la UNEMI.','Experiencia de turismo rural y contacto con la naturaleza.']},
+ {id:'bambu',n:'Belinda Bambú',t:'rural',ico:'i-cana',bg:'#e3f0da',d:'Emprendimiento rural vinculado al bambú y al entorno natural del cantón.',
+  m:['Uno de los servidores turísticos ya desarrollados del cantón.','Buena opción para grupos y salidas de campo.']},
+ {id:'parroquias',n:'Parroquias rurales',t:'rural',ico:'i-finca',bg:'#fff1c9',d:'Chobo, Mariscal Sucre y Roberto Astudillo: el Milagro del campo, las haciendas y lo montuvio.',
+  m:['La mayoría de atractivos destacados del cantón está en zonas rurales.','Haciendas y fincas agroturísticas para conocer la vida campesina.']},
+ {id:'tren',n:'Huella del ferrocarril',t:'cultural',ico:'i-tren',bg:'#fbe0d6',d:'Con el tren llegó el comercio y el turismo; su historia sigue viva en la ciudad.',
+  m:['Los vagones traían turistas nacionales y extranjeros.','Un capítulo clave para entender el crecimiento de Milagro.']},
+ {id:'mercado',n:'Mercado de Milagro',t:'urbano',ico:'i-pina',bg:'#fff1c9',d:'Productos agrícolas frescos, frutas tropicales y, por supuesto, piñas.',
+  m:['El mejor lugar para probar sabores locales.','Ve temprano para encontrar la fruta más fresca.']},
+ {id:'chirijos',n:'Legado de Los Chirijos',t:'cultural',ico:'i-vasija',bg:'#fbe0d6',d:'Piezas arqueológicas que cuentan la historia de los primeros pobladores de la zona.',
+  m:['Colecciones locales reúnen cientos de piezas ancestrales.','Pregunta en espacios culturales de la ciudad por exhibiciones.']}
+];
+const PLATOS=[
+ {n:'Seco de gallina',c:'Plato fuerte',d:'Gallina criolla guisada con especias, servida con arroz, maduro y aguacate. Clásico de la mesa costeña.'},
+ {n:'Bolón de verde',c:'Desayuno',d:'Verde majado con queso o chicharrón, acompañado de café pasado. El desayuno montuvio por excelencia.'},
+ {n:'Caldo de salchicha',c:'Plato típico',d:'Sopa tradicional de la costa preparada con morcilla casera, arroz y hierbas. Ideal para el fin de semana.'},
+ {n:'Jugo y dulce de piña',c:'Dulce milagreño',d:'El sabor emblema: piña fresca en jugo, en dulce casero o en postres. ¡Imprescindible!'},
+ {n:'Maduro con queso',c:'Antojito',d:'Plátano maduro asado o frito con queso criollo. Sencillo, dulce y salado a la vez.'},
+ {n:'Guarapo de caña',c:'Bebida',d:'Jugo recién extraído de la caña de azúcar, refrescante y natural.'},
+ {n:'Fritada',c:'Plato fuerte',d:'Cerdo frito en su propia grasa, con mote, maduro y encurtido. Infaltable en fiestas.'},
+ {n:'Arroz con menestra',c:'Plato del día',d:'Arroz blanco, menestra de fréjol o lenteja y carne asada. El almuerzo de todos los días.'}
+];
+const QUIZ=[
+ {p:'¿Cómo se conoce a Milagro?',o:['La perla del Pacífico','La tierra más dulce del Ecuador','La ciudad de los volcanes','La capital del banano'],r:1,e:'Por su tradición en piña y caña de azúcar.'},
+ {p:'¿En qué año se cantonizó Milagro?',o:['1820','1842','1913','1950'],r:2,e:'El 17 de septiembre de 1913, con Leonidas Plaza Gutiérrez.'},
+ {p:'¿A qué santo se atribuye el “milagro” de la leyenda?',o:['San Pedro','San Francisco','San Juan','San José'],r:1,e:'Por eso el nombre oficial es San Francisco de Milagro.'},
+ {p:'¿Qué ruta turística está en la vía Milagro–Naranjito?',o:['Ruta del Cacao','Ruta del Sol','Ruta de los Viveros','Ruta del Spondylus'],r:2,e:'Decenas de viveros de plantas ornamentales y frutales.'},
+ {p:'¿Cuántos monumentos a la piña tiene la ciudad?',o:['Uno','Dos','Tres','Cinco'],r:2,e:'Tres monumentos honran a la fruta emblema de Milagro.'}
+];
+
+/* ---------------- UTILIDADES ---------------- */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('ver');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove('ver'),2600)}
+const svg=(id,extra='')=>`<svg ${extra}><use href="#${id}"/></svg>`;
+
+/* ---------------- ROUTER ---------------- */
+const VISTAS=['inicio','historia','atractivos','gastronomia','fiestas','planifica','contacto'];
+function ruta(){
+  const h=(location.hash||'#inicio').slice(1);
+  const v=VISTAS.includes(h)?h:'inicio';
+  $$('.vista').forEach(x=>x.classList.toggle('visible',x.id==='v-'+v));
+  $$('.menu a').forEach(a=>a.classList.toggle('activo',a.getAttribute('href')==='#'+v));
+  $('#menu').classList.remove('abierto');
+  window.scrollTo({top:0,behavior:'instant'});
+  setTimeout(observar,50);
+  if(v==='inicio')contar();
+}
+window.addEventListener('hashchange',ruta);
+$('#burger').onclick=()=>$('#menu').classList.toggle('abierto');
+
+/* ---------------- REVEAL ---------------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+function observar(){$$('.vista.visible .rv:not(.in)').forEach(el=>io.observe(el))}
+
+/* ---------------- CONTADORES ---------------- */
+function contar(){
+  $$('[data-cuenta]').forEach(el=>{
+    const fin=+el.dataset.cuenta,suf=el.dataset.suf||'',t0=performance.now(),dur=1600;
+    const paso=t=>{const k=Math.min((t-t0)/dur,1),v=Math.round(fin*(1-Math.pow(1-k,3)));
+      el.textContent=(fin>9999?v.toLocaleString('es-EC'):v)+suf; if(k<1)requestAnimationFrame(paso)};
+    requestAnimationFrame(paso);
+  });
+}
+
+/* ---------------- TIMELINE ---------------- */
+$$('.hito').forEach(h=>h.onclick=()=>{h.classList.toggle('abierto');h.querySelector('.pista').textContent=h.classList.contains('abierto')?'Ver menos −':'Ver más +'});
+
+/* ---------------- ATRACTIVOS ---------------- */
+let favs=ls.get('milagro-favs',[]);
+const TIPOS={urbano:'Urbano',natural:'Natural',rural:'Rural',cultural:'Cultural'};
+$('#lugares').innerHTML=LUGARES.map(l=>`
+ <article class="lugar" data-t="${l.t}">
+  <div class="img ${l.foto?'con-foto':''}" style="background:${l.foto?`url(${l.foto})`:l.bg}"><span class="chip">${TIPOS[l.t]}</span>${l.foto?'':svg(l.ico)}</div>
+  <div class="cuerpo"><h3>${l.n}</h3><p>${l.d}</p>
+   <div class="acciones"><button class="ver" data-id="${l.id}">Ver detalles</button>
+   <button class="fav ${favs.includes(l.id)?'on':''}" data-fav="${l.id}" aria-label="Guardar en favoritos"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5.3-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 5.7-8 11-8 11z"/></svg></button></div>
+  </div></article>`).join('');
+$('#nFav').textContent=favs.length;
+$$('.filtro').forEach(b=>b.onclick=()=>{
+  $$('.filtro').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  $$('.lugar').forEach(c=>c.classList.toggle('oculto',b.dataset.f!=='todos'&&c.dataset.t!==b.dataset.f));
+});
+$('#lugares').addEventListener('click',e=>{
+  const v=e.target.closest('.ver'),f=e.target.closest('.fav');
+  if(v){abrir(v.dataset.id)}
+  if(f){const id=f.dataset.fav;favs=favs.includes(id)?favs.filter(x=>x!==id):[...favs,id];ls.set('milagro-favs',favs);
+    f.classList.toggle('on');$('#nFav').textContent=favs.length;toast(favs.includes(id)?'Agregado a favoritos ♥':'Quitado de favoritos');}
+});
+function abrir(id){const l=LUGARES.find(x=>x.id===id);
+  $('#mImg').style.background=l.foto?`url(${l.foto}) center/cover`:l.bg;$('#mImg').style.height=l.foto?'280px':'200px';$('#mImg').innerHTML=l.foto?'':svg(l.ico);
+  $('#mTxt').innerHTML=`<span class="tag" style="color:var(--coral);font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem">${TIPOS[l.t]}</span><h3>${l.n}</h3><p>${l.d}</p><ul>${l.m.map(x=>`<li>${x}</li>`).join('')}</ul>
+  <div class="botones"><a class="btn btn-p" href="https://www.openstreetmap.org/search?query=${encodeURIComponent(l.n+' Milagro Ecuador')}" target="_blank" rel="noopener">Buscar en el mapa ↗</a><a class="btn btn-s" style="background:var(--arena)" href="#planifica" onclick="cerrar()">Agregar a mi ruta</a></div>`;
+  $('#modal').classList.add('abierto');}
+function cerrar(){$('#modal').classList.remove('abierto')}
+$('#cerrar').onclick=cerrar;$('#modal').onclick=e=>{if(e.target.id==='modal')cerrar()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrar()});
+
+/* ---------------- GASTRONOMÍA ---------------- */
+const colPl=['#f4b324','#7fb069','#e2603b','#ffd36b','#c47f12','#3f8f3a','#a83a22','#8a5a2b'];
+$('#platos').innerHTML=PLATOS.map((p,i)=>`
+ <div class="plato rv"><div class="plato-in">
+  <div class="cara frente"><svg viewBox="0 0 140 110"><use href="#i-plato"/>${i===3?'<use href="#i-pina" x="48" y="0" width="44" height="66"/>':i===5?'<rect x="58" y="22" width="24" height="44" rx="4" fill="#d6e8b8"/><line x1="72" y1="10" x2="72" y2="40" stroke="#7fb069" stroke-width="4"/>':`<ellipse cx="70" cy="58" rx="34" ry="14" fill="${colPl[i]}"/><circle cx="56" cy="52" r="8" fill="#fbf6ea"/><circle cx="86" cy="54" r="6" fill="#3f8f3a"/>`}</svg><h3>${p.n}</h3><small>${p.c}</small><span style="font-size:.8rem;color:var(--gris);margin-top:12px">Toca para girar ↻</span></div>
+  <div class="cara atras"><h3>${p.n}</h3><p>${p.d}</p></div>
+ </div></div>`).join('');
+$$('.plato').forEach(p=>p.onclick=()=>p.classList.toggle('girado'));
+
+/* ---------------- CUENTA REGRESIVA ---------------- */
+function cuenta(){
+  const ahora=new Date();let obj=new Date(ahora.getFullYear(),8,17);
+  if(ahora>obj)obj=new Date(ahora.getFullYear()+1,8,17);
+  const anios=obj.getFullYear()-1913;$('#cuentaTit').textContent=`Faltan para los ${anios} años de cantonización (17 de septiembre)`;
+  let s=Math.floor((obj-ahora)/1000);
+  $('#cd-d').textContent=Math.floor(s/86400);s%=86400;$('#cd-h').textContent=Math.floor(s/3600);s%=3600;
+  $('#cd-m').textContent=Math.floor(s/60);$('#cd-s').textContent=s%60;
+}
+cuenta();setInterval(cuenta,1000);
+
+/* ---------------- PLANIFICADOR ---------------- */
+$('#pChecks').innerHTML=LUGARES.map(l=>`<label class="check"><input type="checkbox" value="${l.id}" ${favs.includes(l.id)?'checked':''}>${l.n}</label>`).join('');
+$('#pDias').oninput=e=>$('#pDiasOut').textContent=e.target.value;
+let textoPlan='';
+$('#formPlan').onsubmit=e=>{
+  e.preventDefault();
+  const sel=$$('#pChecks input:checked').map(i=>LUGARES.find(l=>l.id===i.value));
+  const dias=+$('#pDias').value,nom=$('#pNombre').value.trim()||'viajero';
+  if(!sel.length){toast('Elige al menos un lugar 🍍');return}
+  const orden=['urbano','cultural','natural','rural'];sel.sort((a,b)=>orden.indexOf(a.t)-orden.indexOf(b.t));
+  const por=Math.ceil(sel.length/dias),horas=['09:00','11:00','13:00 · almuerzo típico','15:00','17:00'];
+  let html=`<h3>¡Listo, ${nom}!</h3><p style="opacity:.8">${dias} día${dias>1?'s':''} en Milagro · ${$('#pTipo').value}</p>`;
+  textoPlan=`Mi ruta por Milagro (${dias} día/s)\n`;
+  for(let d=0;d<dias;d++){
+    const g=sel.slice(d*por,d*por+por);if(!g.length)break;
+    html+=`<div class="dia-it"><h4>Día ${d+1}</h4><ul>${g.map((l,i)=>`<li><b style="color:var(--piña);font-weight:600;min-width:48px">${horas[i]?.slice(0,5)||'—'}</b>${l.n}</li>`).join('')}</ul></div>`;
+    textoPlan+=`\nDía ${d+1}:\n`+g.map(l=>'- '+l.n).join('\n');
+  }
+  html+=`<button class="copiar" id="copiarPlan">Copiar itinerario</button>`;
+  $('#itinerario').innerHTML=html;
+  $('#copiarPlan').onclick=()=>copiar(textoPlan,'Itinerario copiado 📋');
+  if(innerWidth<900)$('#itinerario').scrollIntoView({behavior:'smooth'});
+  toast('¡Itinerario generado! 🚆');
+};
+function copiar(t,msg){navigator.clipboard?.writeText(t).then(()=>toast(msg)).catch(()=>toast('No se pudo copiar'))}
+
+/* ---------------- QUIZ ---------------- */
+let qi=0,pts=0;
+function pintaQuiz(){
+  const q=$('#quiz');
+  if(qi>=QUIZ.length){
+    const msg=pts===5?'¡Eres un milagreño de corazón! 🍍':pts>=3?'¡Muy bien! Ya conoces bastante de Milagro.':'¡Sigue explorando el sitio y vuelve a intentarlo!';
+    q.innerHTML=`<div class="prog"><i style="width:100%"></i></div><div style="text-align:center"><svg width="90" height="130" style="margin:0 auto 10px"><use href="#i-pina"/></svg><h3>Obtuviste ${pts} de ${QUIZ.length}</h3><p style="color:var(--gris)">${msg}</p><div class="botones" style="justify-content:center"><button class="btn btn-p" id="reQ">Jugar otra vez</button></div></div>`;
+    $('#reQ').onclick=()=>{qi=0;pts=0;pintaQuiz()};return;
+  }
+  const p=QUIZ[qi];
+  q.innerHTML=`<div class="prog"><i style="width:${qi/QUIZ.length*100}%"></i></div><small style="color:var(--coral);font-weight:600">Pregunta ${qi+1} de ${QUIZ.length}</small><h3>${p.p}</h3>
+   <div class="opciones">${p.o.map((o,i)=>`<button class="op" data-i="${i}">${o}</button>`).join('')}</div>
+   <p class="info"></p><div class="pie"><span>Puntaje: <b>${pts}</b></span><button class="btn btn-p" id="sig" style="display:none">Siguiente →</button></div>`;
+  $$('.op').forEach(b=>b.onclick=()=>{
+    const i=+b.dataset.i;$$('.op').forEach(x=>x.disabled=true);
+    $$('.op')[p.r].classList.add('bien');
+    if(i===p.r){pts++;$('.info').innerHTML='✅ ¡Correcto! '+p.e}else{b.classList.add('mal');$('.info').innerHTML='❌ Casi. '+p.e}
+    $('#sig').style.display='inline-flex';
+  });
+  $('#sig').onclick=()=>{qi++;pintaQuiz()};
+}
+pintaQuiz();
+
+/* ---------------- CONTACTO ---------------- */
+let estrellas=0;
+$('#estrellas').innerHTML=[1,2,3,4,5].map(n=>`<span data-n="${n}">★</span>`).join('');
+const pintaE=n=>$$('#estrellas span').forEach(s=>s.style.color=+s.dataset.n<=n?'#f4b324':'#d9d1bf');
+$$('#estrellas span').forEach(s=>{s.onmouseenter=()=>pintaE(+s.dataset.n);s.onclick=()=>{estrellas=+s.dataset.n;pintaE(estrellas);toast(`¡Gracias por tus ${estrellas} estrella${estrellas>1?'s':''}!`)}});
+$('#estrellas').onmouseleave=()=>pintaE(estrellas);
+$('#cMsj').oninput=e=>$('#nCar').textContent=e.target.value.length;
+const reglas={cNombre:v=>v.trim().length>=3,cCorreo:v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),cAsunto:v=>!!v,cMsj:v=>v.trim().length>=10};
+Object.keys(reglas).forEach(id=>$('#'+id).addEventListener('input',()=>{const c=$('#'+id).closest('.campo');if(reglas[id]($('#'+id).value))c.classList.remove('inval')}));
+$('#formContacto').onsubmit=e=>{
+  e.preventDefault();let ok=true;
+  Object.entries(reglas).forEach(([id,f])=>{const v=f($('#'+id).value);$('#'+id).closest('.campo').classList.toggle('inval',!v);if(!v)ok=false});
+  if(!ok){toast('Revisa los campos marcados');return}
+  const msgs=ls.get('milagro-msgs',[]);msgs.push({n:$('#cNombre').value,c:$('#cCorreo').value,a:$('#cAsunto').value,m:$('#cMsj').value,e:estrellas,f:new Date().toISOString()});ls.set('milagro-msgs',msgs);
+  $('#exNombre').textContent=$('#cNombre').value.trim().split(' ')[0];
+  $('#formContacto').style.display='none';$('#exito').classList.add('ver-ok');
+};
+$('#otroMsj').onclick=()=>{$('#formContacto').reset();$('#nCar').textContent=0;estrellas=0;pintaE(0);$('#exito').classList.remove('ver-ok');$('#formContacto').style.display='block'};
+$('#copiarCorreo').onclick=()=>copiar('jjarrinl@unemi.edu.ec','Correo copiado 📋');
+
+/* ---------------- SUBIR ---------------- */
+addEventListener('scroll',()=>$('#subir').classList.toggle('ver',scrollY>600));
+$('#subir').onclick=()=>scrollTo({top:0,behavior:'smooth'});
+
+ruta();
+</script>
+</body>
+</html>
